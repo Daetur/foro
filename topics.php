@@ -7,9 +7,11 @@ $topic = new Topic;
 $template = new Template('templates/frontpage.php');
 
 //Get Category id from url
-$category = isset($_GET['category']) ? $_GET['category']:null;
+$categoria = isset($_GET['category']) ? $_GET['category']:null;
+$category= htmlspecialchars($categoria);
 //Get User id from url
-$user_id = isset($_GET['user']) ? $_GET['user']:null;
+$iduser = isset($_GET['user']) ? $_GET['user']:null;
+$user_id = htmlspecialchars($iduser);
 
 //Assign Variables to template object
 

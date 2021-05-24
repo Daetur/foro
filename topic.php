@@ -4,7 +4,7 @@
 $topic = new Topic;
 
 //Get Category id from url
-$topic_id = $_GET['id'];
+$topic_id = htmlspecialchars($_GET['id']);
 
 //Process Reply message
 if(isset($_POST['do_reply'])){

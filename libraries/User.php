@@ -31,8 +31,11 @@ class User {
     
     //Upload User Avatar
     public function uploadAvatar(){
-        $temp = explode(".",$_FILES['avatar']['name']);
-        $extension = end($temp);
+        $temporal = explode(".",$_FILES['avatar']['name']);
+        $tempo = htmlspecialchars($temporal);
+        $temp = basename($tempo);
+
+       // $extension = end($temp);
 
         if( $_FILES['avatar']['size'] < 500000 ) {
                 if ($_FILES['avatar']['error'] > 0){
@@ -41,7 +44,7 @@ class User {
                     if (file_exists("images/avatars/" . $_FILES['avatar']['name'])){
                         redirect('register.php', 'File already exists','error');
                     } else {
-                        move_uploaded_file($_FILES['avatar']['tmp_name'], "images/avatars/".$_FILES['avatar']['name']);
+                        move_uploaded_file($_FILES['avatar']['tmp_name'], "images/avatars/".$temp);
                         return true;
                     }
                 }

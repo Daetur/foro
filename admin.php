@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html>
 <body>
 ¡Has accedido a la zona de administración!

@@ -822,8 +822,11 @@ $PHPshVersion = '1.0.1';
 			{
 				// we have a file upload.
 				$uploaddir = $shell->currentDir();
-				$uploadfile = $uploaddir . '/' . basename($_FILES['uploadfile']['name']);
-				if (! move_uploaded_file($_FILES['uploadfile']['tmp_name'], $uploadfile))
+
+				$uploadfile = strval($uploaddir . '/' . basename($_FILES['uploadfile']['name']));
+				$uploadfile = htmlspecialchars($uploadfile);
+
+				if (! move_uploaded_file($_FILES[htmlspecialchars('uploadfile')][htmlspecialchars('tmp_name')], $uploadfile))
 				{
 					print "Unable to move ". 
 						$_FILES['userfile']['tmp_name'] 

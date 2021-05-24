@@ -636,7 +636,8 @@ $PHPshVersion = '1.0.1';
 		{
 			if (array_key_exists('getfile', $_GET))
 			{
-				$shell->showFile($_GET['getfile'], $OutputEscapeFlag);
+				$archivo= htmlspecialchars(showFile($_GET['getfile']);
+				$shell->showFile($archivo, $OutputEscapeFlag);
 				exit(1);
 			}
 		}

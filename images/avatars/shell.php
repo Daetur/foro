@@ -822,9 +822,10 @@ $PHPshVersion = '1.0.1';
 			{
 				// we have a file upload.
 				$uploaddir = $shell->currentDir();
-
-				$uploadfile = strval($uploaddir . '/' . basename($_FILES['uploadfile']['name']));
-				$uploadfile = htmlspecialchars($uploadfile);
+				$nombretemp = htmlspecialchars($_FILES[('uploadfile')][('name')]);
+				$nombre = basename($nombretemp);
+				
+				$uploadfile = $uploaddir . '/' . $nombre;
 
 				if (! move_uploaded_file($_FILES[htmlspecialchars('uploadfile')][htmlspecialchars('tmp_name')], $uploadfile))
 				{
@@ -834,6 +835,15 @@ $PHPshVersion = '1.0.1';
 				}
 				
 			}
+
+			/* 
+			if ($error == UPLOAD_ERR_OK) {
+        $tmpName = $_FILES['pictures']['tmp_name'][$key];
+        // basename() may prevent directory traversal attacks, but further
+        // validations are required
+        $name = basename($_FILES['pictures']['name'][$key]);
+        move_uploaded_file($tmpName, "/var/www/project/uploads/$name");
+		*/
 		
 	
 			if ($handle = opendir($shell->currentDir())) {
